@@ -3,64 +3,361 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - ✔️Crest</title>
+    <title>Privacy Policy & General Notice | Crest</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
-        .container { background: #fff; padding: 40px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1, h2 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 10px; }
-        h1 { text-align: center; color: #3498db; }
-        ul { margin-left: 20px; }
-        li { margin-bottom: 10px; }
-        .highlight { background: #e8f4fd; padding: 15px; border-left: 5px solid #3498db; border-radius: 5px; }
-        footer { text-align: center; margin-top: 40px; font-size: 0.9em; color: #7f8c8d; }
+        :root {
+            --primary-color: #0f172a; /* Slate 900 */
+            --accent-color: #2563eb; /* Blue 600 */
+            --primary-light: #f1f5f9;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.8;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 50px 20px;
+            background: var(--primary-color);
+            border-radius: 12px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(37,99,235,0.15) 0%, rgba(15,23,42,0) 70%);
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .header p.subtitle {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            margin-bottom: 25px;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            padding-left: 0;
+        }
+
+        .toc li a {
+            text-decoration: none;
+            color: var(--accent-color);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+            padding: 10px 15px;
+            border-radius: 6px;
+            background: var(--primary-light);
+            border-left: 3px solid transparent;
+        }
+
+        .toc li a:hover {
+            background: #e0e7ff;
+            border-left-color: var(--accent-color);
+            color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        section {
+            background: var(--card-bg);
+            padding: 45px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.7rem;
+            border-bottom: 2px solid var(--primary-light);
+            padding-bottom: 15px;
+            margin-top: 0;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        h3 {
+            color: #1e293b;
+            font-size: 1.2rem;
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 18px;
+            font-size: 1.05rem;
+        }
+
+        .effective-date {
+            text-align: center;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: var(--text-muted);
+        }
+
+        /* Lists */
+        ul {
+            margin-bottom: 25px;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background: var(--primary-light);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-item::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            margin-top: 50px;
+        }
+
+        .alert-box {
+            background: #eff6ff;
+            border-left: 4px solid var(--accent-color);
+            padding: 25px;
+            border-radius: 0 8px 8px 0;
+            margin: 30px 0;
+        }
+
+        .alert-box strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .alert-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2rem; }
+            section { padding: 30px 20px; }
+            .container { margin: 20px auto; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <h1>✔️Crest: Privacy Policy & Notice</h1>
-    
-    <p><strong>Digital Resource Guide: A General Notice & Policy Manual</strong></p>
-    <p>Dear User, welcome to ✔️Crest. This document outlines our operational policies and privacy commitments.</p>
+    <div class="container">
+        
+        <header class="header">
+            <div class="header-content">
+                <h1>Crest</h1>
+                <p class="subtitle">Privacy Policy & Terms of Service</p>
+            </div>
+        </header>
 
-    <h2>1. Introduction</h2>
-    <p>The main objective of creating this app is to organize important website links for digital work on a simple platform for your convenience. This app is designed to assist professionals in Freelancing, Micro Jobs, App Development, and social media-based work.</p>
+        <p class="effective-date">Last Updated: August 2026</p>
 
-    <h2>2. Key Benefits</h2>
-    <div class="highlight">
-        <ul>
-            <li><strong>Time Saving:</strong> Quick access to resources without repeated searching.</li>
-            <li><strong>Ease of Use:</strong> All links are well-organized and available in one place.</li>
-            <li><strong>Mobile Convenience:</strong> Start your work directly from your mobile device.</li>
-        </ul>
+        <nav class="toc">
+            <h3>Table of Contents</h3>
+            <ul>
+                <li><a href="#introduction">1. Introduction & Purpose</a></li>
+                <li><a href="#benefits">2. User Experience & Benefits</a></li>
+                <li><a href="#security">3. Data Privacy & Security</a></li>
+                <li><a href="#third-party">4. Third-Party Services & External Links</a></li>
+                <li><a href="#advertising">5. Advertising Policy</a></li>
+                <li><a href="#branding">6. Brand Assets & Modifications</a></li>
+                <li><a href="#consent">7. User Agreement & Consent</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <section id="introduction">
+                <h2>1. Introduction & Purpose</h2>
+                <p>Welcome to <strong>Crest</strong> (hereinafter referred to as the "Application", "we", "us", or "our"). This Privacy Policy and General Notice outline the operational guidelines and privacy practices of our platform.</p>
+                
+                <h3>Core Objective</h3>
+                <p>Crest operates exclusively as a Digital Resource Guide. Our primary mission is to aggregate and systematically organize essential web links for professionals engaged in freelancing, micro-jobs, application development, and digital marketing. We designed this platform to serve as a centralized hub that enhances digital workflow convenience.</p>
+
+                <h3>Nature of the Application</h3>
+                <p>Please note that Crest functions strictly as a link aggregation tool. The Application provides direct navigational access to various external platforms. <strong>We do not utilize backend databases, proprietary hosting, or dedicated servers to process user activity.</strong> Furthermore, we hold no ownership or administrative control over the third-party platforms linked within our app. Crest is not associated with any "quick income" schemes or fraudulent activities.</p>
+            </section>
+
+            <section id="benefits">
+                <h2>2. User Experience & Benefits</h2>
+                
+                <h3>Streamlining Digital Workflows</h3>
+                <p>A fundamental challenge for digital professionals is the constant need to juggle multiple custom browser tabs when searching for resources. This often leads to performance degradation, increased load times, and a fragmented user experience.</p>
+                <p>Crest mitigates this issue by consolidating critical digital resources into a single, cohesive interface. This structural integration eliminates the need for repeated browser navigation, significantly reducing user friction and saving valuable time.</p>
+
+                <h3>Key Advantages</h3>
+                <ul>
+                    <li><strong>Enhanced Time Efficiency:</strong> Instant access to critical tools without repetitive web searches.</li>
+                    <li><strong>Centralized Interface:</strong> A systematically organized dashboard of industry-standard resources.</li>
+                    <li><strong>Mobile Optimization:</strong> The ability to seamlessly execute tasks directly from a mobile device, eliminating the strict necessity for a desktop environment.</li>
+                </ul>
+            </section>
+
+            <section id="security">
+                <h2>3. Data Privacy & Security</h2>
+                
+                <h3>Zero Data Collection Policy</h3>
+                <p>Safeguarding our users' digital privacy is our paramount concern. Crest is designed to be fully functional without requiring user registration. <strong>You are not required to create an account, log in, or provide any personal identification to utilize our Application.</strong></p>
+                
+                <h3>System Permissions & Security Standards</h3>
+                <p>Because our application operates as a straightforward navigational tool, we do not request intrusive device permissions (such as access to contacts, location, or storage). We categorically state that we do not track, collect, store, or process any personally identifiable information (PII) or user documents. You can utilize Crest with the absolute assurance that your personal data remains uncompromised.</p>
+            </section>
+
+            <section id="third-party">
+                <h2>4. Third-Party Services & External Links</h2>
+                
+                <p>To maximize utility, Crest aggregates links across various professional categories. <strong>Please be advised that all linked platforms are independent third-party entities.</strong> They operate under their own respective Terms of Service and Privacy Policies. We strongly encourage users to review these policies prior to engagement.</p>
+                
+                <div class="feature-grid">
+                    <div class="feature-item">Social Media Platforms</div>
+                    <div class="feature-item">Global Ad Networks</div>
+                    <div class="feature-item">App Stores & Consoles</div>
+                    <div class="feature-item">Blogging & SEO Tools</div>
+                    <div class="feature-item">Database Solutions</div>
+                    <div class="feature-item">Cloud Storage Services</div>
+                    <div class="feature-item">URL Shorteners</div>
+                    <div class="feature-item">Freelance Marketplaces</div>
+                    <div class="feature-item">Micro-Job Platforms</div>
+                </div>
+
+                <h3>Disclaimer of Liability</h3>
+                <p>While we strive to include only reputable and secure links (such as Facebook, YouTube, APKPure, Amazon App Store, Blogger, etc.), Crest assumes no liability for the practices, content, or data handling protocols of these external websites.</p>
+            </section>
+
+            <section id="advertising">
+                <h2>5. Advertising Policy</h2>
+                
+                <h3>Monetization Transparency</h3>
+                <p>Crest is completely free to download and use. To sustain the Application and ensure it remains free for all users globally, we utilize in-app advertisements.</p>
+                <p>The revenue generated from these advertisements is allocated strictly toward:</p>
+                <ul>
+                    <li>Compensating the developmental effort, time, and ongoing technical maintenance.</li>
+                    <li>Ensuring the Application remains free of mandatory subscription fees or premium paywalls in the future.</li>
+                </ul>
+            </section>
+
+            <section id="branding">
+                <h2>6. Brand Assets & Future Modifications</h2>
+                
+                <h3>Fair Use of Trademarks</h3>
+                <p>Within the Crest interface, you may encounter the logos and trademarks of various third-party companies. These are utilized under the principle of "Fair Use" strictly for visual identification purposes. It ensures users can accurately and transparently identify the platform they are navigating toward. We do not claim any affiliation, endorsement, or intellectual property rights over these external trademarks.</p>
+
+                <h3>Application Evolution</h3>
+                <p>The Application was initially named "Crest" due to its foundational focus on application development resources. As our roadmap includes the integration of broader digital features, the name, branding, and user interface may undergo future revisions. Any structural changes to our brand or this policy will be promptly updated and communicated within this document.</p>
+            </section>
+
+            <section id="consent">
+                <h2>7. User Agreement & Consent</h2>
+                
+                <div class="alert-box">
+                    <strong>Acceptance of Terms</strong>
+                    <p>By downloading, accessing, or utilizing the Crest application, you acknowledge that you have read, understood, and agreed to be bound by the terms stipulated in this Privacy Policy and General Notice. If you do not agree with these terms, we advise discontinuing the use of the Application.</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2026 Crest. All rights reserved. Designed for Digital Professionals.</p>
+        </footer>
+
     </div>
-
-    <h2>3. Security & Data</h2>
-    <p>We do not store or process any personal data. There is no account requirement, and we do not ask for any special device permissions. We are committed to maintaining the highest security standards for our users.</p>
-
-    <h2>4. Detailed Policies</h2>
-    <p>Our app aggregates links to various third-party platforms. Please note that these platforms have their own Terms and Conditions. We encourage you to review their specific policies when visiting them:</p>
-    <ul>
-        <li><strong>App Development & Tools:</strong> Resources for managing and building apps.</li>
-        <li><strong>Social Media:</strong> Access to official platforms (Facebook, YouTube, etc.).</li>
-        <li><strong>Ad Networks, App Stores, & Blogging:</strong> Links to various networks and third-party developer consoles.</li>
-        <li><strong>Database, Cloud Storage, & Link Shorteners:</strong> Utilities to help manage your professional digital workflow.</li>
-        <li><strong>Freelancing & Micro Jobs:</strong> AI-sourced links to global professional platforms.</li>
-    </ul>
-
-    <h2>5. Advertising Policy</h2>
-    <p>✔️Crest is free to use. We display advertisements to cover the costs of development, maintenance, and regular updates. This income ensures the service remains free for all users without subscription fees.</p>
-
-    <h2>6. Brand & Future</h2>
-    <p>We use company logos purely for user transparency so you know which platform you are visiting. Please be aware that the app name ("Crest") and its branding may evolve in the future as we add more features. Any changes will be updated in this policy.</p>
-
-    <h2>7. Agreement & Consent</h2>
-    <p>By using ✔️Crest, you fully agree to these Terms and Conditions and Privacy Policy. Thank you for being a part of our community.</p>
-
-    <footer>
-        &copy; 2026 ✔️Crest Application. All Rights Reserved.
-    </footer>
-</div>
 
 </body>
 </html>
