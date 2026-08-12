@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crest - Terms & Privacy Policy</title>
+    <style>
+        :root {
+            --bg-color: #f1f5f9;
+            --sidebar-bg: #ffffff;
+            --content-bg: #ffffff;
+            --primary-text: #334155;
+            --heading-color: #0f172a;
+            --accent-color: #0284c7;
+            --accent-light: #f0f9ff;
+            --border-color: #e2e8f0;
+            --tag-bg: #e2e8f0;
+            --tag-text: #475569;
+            --accent-orange: #f59e0b;
+            --accent-orange-light: #fffbeb;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Layout Container */
+        .page-wrapper {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 320px;
+            background: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 40px 24px;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-brand {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--heading-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .sidebar-menu a {
+            color: var(--primary-text);
+            text-decoration: none;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: var(--accent-light);
+            color: var(--accent-color);
+            padding-left: 18px;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            flex: 1;
+            padding: 50px 60px;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            overflow-y: auto;
+        }
+
+        .content-container {
+            width: 100%;
+            max-width: 900px;
+            background: var(--content-bg);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 40px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--heading-color);
+            margin-top: 50px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: var(--heading-color);
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-top: 0;
+            margin-bottom: 16px;
+        }
+
+        .dear-user {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--heading-color);
+            margin-bottom: 24px;
+        }
+
+        ul {
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        /* Custom Cards */
+        .section-box {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+
+        .section-box.warning {
+            border-left-color: var(--accent-orange);
+        }
+
+        .note-box {
+            background-color: var(--accent-light);
+            border: 1px dashed var(--accent-color);
+            padding: 18px 24px;
+            border-radius: 8px;
+            margin: 30px 0;
+            font-size: 1rem;
+        }
+
+        .agreement-box {
+            background-color: var(--accent-orange-light);
+            border: 1px solid #fef3c7;
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin: 30px 0;
+            color: #b45309;
+            font-weight: 600;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0 35px 0;
+        }
+
+        .tag {
+            background-color: var(--tag-bg);
+            color: var(--tag-text);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+
+        .divider {
+            height: 1px;
+            background-color: var(--border-color);
+            margin: 50px 0;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 992px) {
+            .page-wrapper {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 25px 20px;
+            }
+            .main-content {
+                padding: 20px 10px;
+            }
+            .content-container {
+                padding: 30px 20px;
+                border-radius: 12px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                ✔️ Crest
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#welcome">১. Introduction</a></li>
+                <li><a href="#benefits">২. Key Benefits</a></li>
+                <li><a href="#security">৩. Security & Data</a></li>
+                <li><a href="#rules">৪. Detailed Policies</a></li>
+                <li><a href="#ads">৫. Advertising Policy</a></li>
+                <li><a href="#brand">৬. Brand & Future</a></li>
+                <li><a href="#consent">৭. Agreement & Consent</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-container">
+                
+                <h1 id="welcome">Crest</h1>
+                <div class="subtitle">Digital Resource Guide: A General Notice & Policy Manual</div>
+
+                <p class="dear-user">Dear User,</p>
+                
+                <div class="section-box">
+                    <h3>Core Purpose of the Application</h3>
+                    <p>The main objective of creating this app (a "Digital Resource Guide") is to organize important website links used for digital work on a simple platform for your convenience.</p>
+                    <p>Our application is not intended for any third-party activities. Our primary goal is to assist professionals involved in Freelancing, Micro Jobs, App Development, and other similar digital and social media-based work. This app has been specifically designed with user convenience in mind.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Nature of the App</h3>
+                    <p>This is a link collection app. The links provided here offer direct access to those websites.</p>
+                    <p>This app does not use any database, hosting, or server.</p>
+                    <p>We do not have ownership or control over any of the links or platforms in this app. This is not a quick money-making or fraudulent app.</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Section 2: Key Benefits of Use -->
+                <h2 id="benefits">Benefits of Using the App</h2>
+                
+                <div class="section-box">
+                    <h3>Streamlining the User Experience</h3>
+                    <p>A key goal in developing our app is to make the user's searching process easier and faster.</p>
+                    <p>We have observed that users frequently search on Google Chrome for information. When they look for a second item, they have to open a new Custom Tab in their browser. This results in multiple tabs being created, which often causes the browser to take a lot of time to load, presenting a problem for users.</p>
+                    <p>To eliminate this issue, we have integrated various features in one place within our app. This prevents the user from having to repeatedly go to the browser and open new tabs, which saves time and ensures a smoother browsing experience.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Key Benefits Checklist</h3>
+                    <ul>
+                        <li><strong>Time Saving:</strong> Quick access to resources without repeated searching.</li>
+                        <li><strong>Ease of Use:</strong> All links are well-organized and available in one place.</li>
+                        <li><strong>Mobile Convenience:</strong> The advantage of starting work directly from your mobile device.</li>
+                    </ul>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Section 3: User Security and Data Protection -->
+                <h2 id="security">User Security and Data Protection</h2>
+                
+                <div class="section-box">
+                    <h3>Data Security and Account Requirement</h3>
+                    <p>Ensuring the security of our users' data is our main objective. There is no need to create an account to use our app.</p>
+                    <p>The app will not ask for any special permissions from the user. Since no account is required, we do not store or process any personal data of the users.</p>
+                </div>
+
+                <div class="section-box warning">
+                    <h3>Security Standard</h3>
+                    <p>We do not steal any of your personal information or documents. Generally, our app does not require any special permissions or the creation of an account to be used. We are committed to maintaining the security of user information.</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Section 4: Detailed Policy Rules -->
+                <h2 id="rules">Detailed Policy Rules</h2>
+                
+                <p>Below is a summary of the key topics handled by the features in our application:</p>
+                
+                <div class="tags-container">
+                    <span class="tag">Security</span>
+                    <span class="tag">App Creation Features</span>
+                    <span class="tag">Social Media Platforms</span>
+                    <span class="tag">Other Applications</span>
+                    <span class="tag">Ad Networks</span>
+                    <span class="tag">App Stores/Sites</span>
+                    <span class="tag">Blogging Platforms</span>
+                    <span class="tag">Database Services</span>
+                    <span class="tag">Cloud Storage</span>
+                    <span class="tag">Short Link Services</span>
+                    <span class="tag">Freelancing Platforms</span>
+                    <span class="tag">Micro Job Platforms</span>
+                </div>
+
+                <div class="section-box">
+                    <h3>✔️Crest Features</h3>
+                    <p>The Meta Portal app includes several features for app development. These features belong to other third-party platforms and are not owned by us. They have their own Terms and Conditions and rules. We have merely aggregated and published them in our app solely for the convenience of our users.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Social Media Platforms</h3>
+                    <p>Links to Facebook, YouTube, and various websites are shared within our app. These platforms are completely safe. We have included only our own official social media links and websites here to make them easily accessible to users.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Other Applications</h3>
+                    <p>To help users easily find other apps developed by our company, we have shared links to a selection of our applications here.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Ad Networks (Advertising Network)</h3>
+                    <p>We have included links to various popular advertising networks. These are subject to their own Terms and Conditions and Privacy Policies. We share them with the convenience of our users in mind. You are strongly requested to carefully read their respective Privacy Policies before using these services.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>App Stores/Sites</h3>
+                    <p>Popular app sites like APKPure, Amazon App Store, Apk Developer Console, Apk Mirror, Apk Combo, Aptoide, Softonic, Appagg, Getjar, uptodown developer console, appsapk, and uptodown have been included here. Through these, users can download and publish various types of apps and promote their app activities. These are all third-party platforms, and they have their own Terms and Conditions and Privacy Policies. Please read their policies before use.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Blogging Platforms (Blogger)</h3>
+                    <p>Sites covering all activities, from creating a website to getting it displayed on the Google search engine (including Blogger), have been added here for the additional benefit of users. These are subject to their own Terms and Conditions and Privacy Policies. Please read their policies before use.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Database Services</h3>
+                    <p>When developing apps for Android and iOS, a database is required to control the application. We have included links to popular database services here for the convenience of users. These are subject to their own Terms and Conditions and Privacy Policies. Please read their policies before use.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Cloud Storage</h3>
+                    <p>Whether working in an office, online, freelancing, or app development, a reliable cloud storage service is needed to keep documents secure. Links to popular cloud storage platforms have been included here, keeping user convenience and security in mind. These are subject to their own Terms and Conditions and Privacy Policies. Please read their policies before use.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Short Link Services</h3>
+                    <p>When a user works on a project, freelancing, or micro job, a short link is often needed to easily share a long URL with friends. Several popular link shorteners are provided here. These are subject to their own Terms and Conditions and Privacy Policies. Please read their policies before use.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Freelancing Platforms</h3>
+                    <p>To help users from various countries easily find the right freelancing websites, links to popular freelancing websites sourced from Al have been included here. These are subject to their own Terms and Conditions and Privacy Policies. Please read their policies before use.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>Micro Job Platforms</h3>
+                    <p>For users in various countries who work on micro jobs, links to popular micro job websites sourced from Al have been included here. These are subject to their own Terms and Conditions and Privacy Policies. Please read their policies before use.</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Section 5: Reason for Using Advertisements -->
+                <h2 id="ads">Reason for Using Advertisements (Advertising Policy)</h2>
+                
+                <div class="section-box">
+                    <p>We are making this app available to users completely free of charge. The primary reason for displaying advertisements in the app is:</p>
+                    <ul>
+                        <li><strong>Developer's Effort and Time:</strong> The advertisements cover the cost of the valuable time and effort given by the developer to create, regularly update, and maintain the app.</li>
+                        <li><strong>Ensuring Free Service:</strong> The small income earned through advertisements ensures that we can keep this app open to everyone in the future without any subscription fees.</li>
+                    </ul>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Section 6: App Naming, Logos, and Future Changes -->
+                <h2 id="brand">Brand Assets & Future Changes</h2>
+                
+                <div class="section-box">
+                    <h3>Use of Company Logos</h3>
+                    <p>We have used the logos of various companies within the app. The sole reason for this is to ensure that users can easily understand which website or platform they are visiting when they are working or clicking on a link. This guarantees transparency and convenience for our users. We have no other intent beyond this for using the logos.</p>
+                </div>
+
+                <div class="section-box">
+                    <h3>App Naming and Future Changes</h3>
+                    <p><strong>Home Page:</strong> Currently, the home page of our app primarily features sites for creating apps. This is why the app was initially named "Crest".</p>
+                    <p><strong>Future:</strong> However, our app includes many more features beyond this, and we plan to incorporate even more in the future.</p>
+                    <p>Consequently, the name and logo of our app may change in the future. All new features and changes will always be clearly noted and updated within our Privacy Policy.</p>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Section 7: Agreement & Consent -->
+                <h2 id="consent">Agreement & Consent</h2>
+                
+                <div class="note-box">
+                    <strong>Please remember:</strong> This is a general notice. For detailed information on the app's data usage, please read our Privacy Policy.
+                </div>
+
+                <div class="agreement-box">
+                    By being a user of ✔️Crest, it is assumed that you fully agree to these Terms and Conditions and Privacy Policy.
+                </div>
+
+                <p>Thank you for using the Crest application.</p>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
