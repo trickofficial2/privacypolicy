@@ -713,13 +713,62 @@
       }, delayMs);
     }
 
+    // Real Ad SDK loaders & execution (matching user's script)
+    function loadGigaSDK(scriptId) {
+      if (!scriptId || document.getElementById('giga-sdk-' + scriptId)) return;
+      const s = document.createElement('script');
+      s.id = 'giga-sdk-' + scriptId;
+      s.src = 'https://ad.gigapub.tech/script?id=' + encodeURIComponent(scriptId.trim());
+      s.async = true;
+      document.head.appendChild(s);
+    }
+
+    function loadMonetagSDK(zoneId) {
+      const cleanZone = (zoneId || '').replace(/\D/g, '');
+      if (!cleanZone || document.getElementById('monetag-sdk-' + cleanZone)) return;
+      const s = document.createElement('script');
+      s.id = 'monetag-sdk-' + cleanZone;
+      s.src = 'https://alwingulla.com/88/tag.min.js';
+      s.setAttribute('data-zone', cleanZone);
+      s.async = true;
+      s.setAttribute('data-cfasync', 'false');
+      document.head.appendChild(s);
+    }
+
     function triggerAdImpression(pkg) {
-      // In sandbox mode, ping or load through sandbox iframe
-      const iframe = document.getElementById('ad-sandbox-frame');
-      if (pkg.provider === 'direct' && pkg.adId.startsWith('http')) {
-        try {
-          iframe.src = pkg.adId;
-        } catch(e) {}
+      try {
+        if (pkg.provider === 'gigapub') {
+          loadGigaSDK(pkg.adId);
+          if (typeof window.showGiga === 'function') {
+            window.showGiga().catch(() => {});
+          } else {
+            setTimeout(() => {
+              if (typeof window.showGiga === 'function') window.showGiga().catch(() => {});
+            }, 1000);
+          }
+        } else if (pkg.provider === 'monetag') {
+          const cleanZone = (pkg.adId || '').replace(/\D/g, '');
+          loadMonetagSDK(cleanZone);
+          const fnName = 'show_' + cleanZone;
+          if (typeof window[fnName] === 'function') {
+            window[fnName]().catch(() => {});
+          } else {
+            setTimeout(() => {
+              if (typeof window[fnName] === 'function') window[fnName]().catch(() => {});
+            }, 1200);
+          }
+        } else {
+          // Direct Link
+          const targetUrl = pkg.adId.startsWith('http') ? pkg.adId : 'https://' + pkg.adId;
+          const tg = window.Telegram?.WebApp;
+          if (tg && typeof tg.openLink === 'function') {
+            tg.openLink(targetUrl);
+          } else {
+            window.open(targetUrl, '_blank');
+          }
+        }
+      } catch (err) {
+        console.warn('Ad trigger notice:', err);
       }
     }
 
