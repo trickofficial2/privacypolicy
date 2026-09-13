@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Self Click Automation | Telegram WebApp</title>
   
+  <!-- Preconnect to Ad Networks for Ultra-Fast Loading -->
+  <link rel="preconnect" href="https://ad.gigapub.tech" crossorigin>
+  <link rel="preconnect" href="https://libtl.com" crossorigin>
+  <link rel="preconnect" href="https://alwingulla.com" crossorigin>
+  <link rel="dns-prefetch" href="https://ad.gigapub.tech">
+  <link rel="dns-prefetch" href="https://libtl.com">
+
   <!-- Telegram WebApp SDK -->
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
   
@@ -50,7 +57,7 @@
     }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen pb-24 antialiased selection:bg-cyan-500 selection:text-white transition-colors duration-200">
+<body class="bg-slate-950 text-slate-100 min-h-screen pb-24 antialiased selection:bg-cyan-500 selection:text-white transition-colors duration-200" oncontextmenu="return false;">
 
   <!-- Toast Notification -->
   <div id="toast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 hidden px-4 py-2.5 rounded-xl shadow-2xl text-xs font-bold transition-all duration-300 flex items-center gap-2 border"></div>
@@ -67,9 +74,9 @@
         <div>
           <h1 class="text-sm font-bold tracking-tight flex items-center gap-1.5" id="txt-app-title">
             Self Click Bot
-            <span class="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Pro</span>
+            <span class="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Ultra Pro</span>
           </h1>
-          <p class="text-[10px] text-slate-400" id="txt-app-subtitle">Monetag & GigaPub Self-Clicking</p>
+          <p class="text-[10px] text-slate-400" id="txt-app-subtitle">Monetag & GigaPub Auto-Click & Skip</p>
         </div>
       </div>
 
@@ -157,11 +164,11 @@
           <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20" id="runner-speed">5s interval</span>
         </div>
 
-        <!-- Real Ad Live Status Banner -->
-        <div id="runner-status-box" class="py-2 px-3 rounded-xl bg-slate-950/70 border border-cyan-500/30 flex items-center justify-between text-xs">
+        <!-- Real Ad Live Detailed Phase Banner -->
+        <div id="runner-status-box" class="py-2.5 px-3 rounded-xl bg-slate-950/80 border border-cyan-500/30 flex items-center justify-between text-xs">
           <div id="runner-status-text" class="flex items-center gap-2 text-cyan-300 font-mono text-[11px]">
             <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-            <span>Real Ad Automation Active (No click needed)</span>
+            <span>Real Ad Automation Active</span>
           </div>
           <span id="runner-countdown-badge" class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">Auto</span>
         </div>
@@ -179,7 +186,7 @@
 
         <!-- Controls -->
         <div class="flex gap-2 pt-1">
-          <button id="btn-force-ad" onclick="forceNextAdNow()" class="py-1.5 px-3 rounded-lg bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 text-xs font-semibold border border-cyan-500/30 flex items-center gap-1 cursor-pointer" title="Trigger next ad right now without waiting">
+          <button id="btn-force-ad" onclick="forceNextAdNow()" class="py-1.5 px-3 rounded-lg bg-cyan-600/20 hover:bg-cyan-600/30 text-cyan-300 text-xs font-semibold border border-cyan-500/30 flex items-center gap-1 cursor-pointer" title="Trigger next ad right now">
             <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
@@ -215,14 +222,14 @@
           <h2 class="text-base font-bold text-white" id="title-create-pkg">Create New Package</h2>
           <p class="text-xs text-slate-400" id="sub-create-pkg">Configure Monetag, GigaPub or Direct Link</p>
         </div>
-        <button onclick="switchTab('dashboard')" class="text-xs text-slate-400 hover:text-white" id="btn-cancel">Cancel</button>
+        <button onclick="switchTab('dashboard')" class="text-xs text-slate-400 hover:text-white cursor-pointer" id="btn-cancel">Cancel</button>
       </div>
 
       <form id="create-package-form" onsubmit="handleCreatePackage(event)" class="space-y-4">
         <!-- Package Name -->
         <div>
           <label class="block text-xs font-medium text-slate-300 mb-1" id="lbl-pkg-name">Package Name</label>
-          <input type="text" id="pkg-name" required placeholder="e.g. My Monetag High CPM" 
+          <input type="text" id="pkg-name" required placeholder="e.g. Monetag Auto Click & Skip" 
                  class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 input-box">
         </div>
 
@@ -237,7 +244,7 @@
           </select>
         </div>
 
-        <!-- Ad ID / Direct Link (EMPTY by default) -->
+        <!-- Ad ID / Direct Link -->
         <div>
           <label id="pkg-ad-id-label" class="block text-xs font-medium text-slate-300 mb-1">
             Monetag Zone ID <span class="text-rose-400">*</span>
@@ -258,10 +265,40 @@
           </div>
 
           <div>
-            <label class="block text-xs font-medium text-slate-300 mb-1" id="lbl-interval">Interval (Seconds)</label>
-            <input type="number" id="pkg-interval" required min="2" max="120" value="5" 
+            <label class="block text-xs font-medium text-slate-300 mb-1" id="lbl-interval">Next Ad Interval (Sec)</label>
+            <input type="number" id="pkg-interval" required min="2" max="120" value="6" 
                    class="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-cyan-500 input-box">
           </div>
+        </div>
+
+        <!-- NEW: Ad Watch Time & Click Stay Time -->
+        <div class="grid grid-cols-2 gap-3 p-3 rounded-xl bg-slate-900/90 border border-cyan-500/20 card-box">
+          <div>
+            <label class="block text-xs font-medium text-cyan-300 mb-1" id="lbl-watch-time">
+              Ad Play Time (Sec)
+            </label>
+            <input type="number" id="pkg-watch-time" required min="2" max="60" value="5" 
+                   class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-500 input-box">
+            <span class="text-[10px] text-slate-400 mt-0.5 block" id="sub-watch-time">Play before click</span>
+          </div>
+
+          <div>
+            <label class="block text-xs font-medium text-cyan-300 mb-1" id="lbl-stay-time">
+              Click & Stay (Sec)
+            </label>
+            <input type="number" id="pkg-stay-time" required min="1" max="60" value="3" 
+                   class="w-full bg-slate-950 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-cyan-500 input-box">
+            <span class="text-[10px] text-slate-400 mt-0.5 block" id="sub-stay-time">Stay before back</span>
+          </div>
+        </div>
+
+        <!-- Auto-Click & Auto-Skip Checkbox -->
+        <div class="flex items-center justify-between p-3 rounded-xl bg-slate-900 border border-slate-800 card-box">
+          <div>
+            <div class="text-xs font-semibold text-emerald-400" id="lbl-autoclick-skip">Auto-Click & Skip / Back</div>
+            <div class="text-[11px] text-slate-400" id="sub-autoclick-skip">Automatically clicks ad & returns back to app</div>
+          </div>
+          <input type="checkbox" id="pkg-autoclick" checked class="w-4 h-4 accent-cyan-500 rounded cursor-pointer">
         </div>
 
         <!-- Referrer Spoofing -->
@@ -306,7 +343,7 @@
       </div>
     </div>
 
-    <!-- View: Profile & Code Copy -->
+    <!-- View: Profile (Protected - No Code Leaks) -->
     <div id="view-profile" class="hidden space-y-4">
       <div class="p-4 rounded-2xl bg-slate-900 border border-slate-800 space-y-4 card-box">
         <div class="flex items-center gap-3">
@@ -327,38 +364,9 @@
             <span class="font-bold text-emerald-400" id="val-status">Connected</span>
           </div>
           <div class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800">
-            <span class="text-slate-400 text-[10px] block" id="lbl-isolation">Data Storage</span>
-            <span class="font-bold text-cyan-400" id="val-isolation">Isolated Local</span>
+            <span class="text-slate-400 text-[10px] block" id="lbl-isolation">Security & Isolation</span>
+            <span class="font-bold text-cyan-400" id="val-isolation">Private Sandboxed</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Copy Full Single HTML Code Box -->
-      <div class="p-4 rounded-2xl bg-gradient-to-br from-cyan-950/40 via-slate-900 to-blue-950/30 border-2 border-cyan-500/40 space-y-3 card-box">
-        <div class="flex items-center gap-2">
-          <div class="w-8 h-8 rounded-lg bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-mono font-bold">
-            &lt;/&gt;
-          </div>
-          <div>
-            <h4 class="font-bold text-white text-xs" id="lbl-copy-code-title">Single HTML File Code</h4>
-            <p class="text-[11px] text-slate-300" id="lbl-copy-code-desc">Copy entire code to paste into GitHub Pages</p>
-          </div>
-        </div>
-
-        <div class="flex gap-2">
-          <button onclick="copyEntireHtml()" class="flex-1 py-2.5 px-3 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white text-xs font-bold flex items-center justify-center gap-1.5 transition cursor-pointer">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-            </svg>
-            <span id="btn-copy-code">Copy Complete HTML</span>
-          </button>
-
-          <button onclick="downloadSelfHtml()" class="py-2.5 px-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center justify-center gap-1.5 transition border border-slate-700 cursor-pointer">
-            <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
-            </svg>
-            <span id="btn-download-html">Download .html</span>
-          </button>
         </div>
       </div>
 
@@ -408,11 +416,18 @@
 
   <!-- Application Logic -->
   <script>
+    // Disable inspect hotkeys for security
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'i' || e.key === 'j')) || e.key === 'F12') {
+        e.preventDefault();
+      }
+    });
+
     // ================= 1. BILINGUAL TRANSLATIONS =================
     const dict = {
       en: {
         appTitle: 'Self Click Bot',
-        appSubtitle: 'Monetag & GigaPub Self-Clicking',
+        appSubtitle: 'Monetag & GigaPub Auto-Click & Skip',
         totalPackages: 'Total Packages',
         readyToRun: 'Ready to run',
         completedClicks: 'Completed Clicks',
@@ -425,7 +440,7 @@
         btnLogs: 'Logs',
         myPackages: 'My Ad Packages',
         noPackages: 'No Packages Created Yet',
-        noPackagesSub: 'Click below to create your Monetag, GigaPub, or Direct Link package.',
+        noPackagesSub: 'Click below to configure your Monetag, GigaPub or Direct Link.',
         createFirstPkg: 'Create Package Now',
         titleCreate: 'Create New Package',
         subCreate: 'Configure Monetag, GigaPub or Direct Link',
@@ -433,7 +448,13 @@
         pkgName: 'Package Name',
         adNetwork: 'Ad Network Provider',
         targetClicks: 'Target Clicks',
-        intervalSec: 'Interval (Seconds)',
+        intervalSec: 'Next Ad Interval (Sec)',
+        watchTime: 'Ad Play Time (Sec)',
+        subWatchTime: 'Play before click',
+        stayTime: 'Click & Stay (Sec)',
+        subStayTime: 'Stay before back',
+        autoClickSkip: 'Auto-Click & Skip / Back',
+        autoClickSkipSub: 'Automatically clicks ad & returns back to app',
         trafficSrc: 'Traffic Referrer',
         antiBan: 'Anti-Ban Random Delay',
         antiBanSub: 'Adds ±1 to 3 seconds natural delay jitter',
@@ -443,12 +464,8 @@
         clearLogs: 'Clear Logs',
         statusTg: 'Telegram Status',
         connected: 'Connected',
-        storage: 'Data Storage',
-        isolated: 'Isolated Local',
-        copyCodeTitle: 'Single HTML File Code',
-        copyCodeDesc: 'Copy entire code to paste into GitHub Pages',
-        btnCopyCode: 'Copy Complete HTML',
-        btnDownload: 'Download .html',
+        storage: 'Security & Isolation',
+        isolated: 'Private Sandboxed',
         accountData: 'Account Data',
         resetData: 'Reset All Saved Packages & Logs',
         navDashboard: 'Dashboard',
@@ -464,7 +481,7 @@
       },
       bn: {
         appTitle: 'সেলফ ক্লিক বট',
-        appSubtitle: 'মানেট্যাগ ও গিগাপাব অটোমেশন',
+        appSubtitle: 'মানেট্যাগ ও গিগাপাব অটো-ক্লিক ও ব্যাক সিস্টেম',
         totalPackages: 'মোট প্যাকেজ',
         readyToRun: 'চালানোর জন্য প্রস্তুত',
         completedClicks: 'সম্পন্ন ক্লিক',
@@ -485,7 +502,13 @@
         pkgName: 'প্যাকেজের নাম',
         adNetwork: 'অ্যাড নেটওয়ার্ক প্রোভাইডার',
         targetClicks: 'টার্গেট ক্লিক সংখ্যা',
-        intervalSec: 'বিরতি সময় (সেকেন্ড)',
+        intervalSec: 'পরবর্তী বিজ্ঞাপনের বিরতি (সেকেন্ড)',
+        watchTime: 'বিজ্ঞাপন দেখার সময় (সেকেন্ড)',
+        subWatchTime: 'ক্লিকের পূর্বে বিজ্ঞাপন চলবে',
+        stayTime: 'ক্লিক পরবর্তী অবস্থানের সময় (সেকেন্ড)',
+        subStayTime: 'বিজ্ঞাপনে থেকে অ্যাপে ব্যাক আসবে',
+        autoClickSkip: 'অটো-ক্লিক ও স্কিপ / ব্যাক',
+        autoClickSkipSub: 'বিজ্ঞাপনে স্বয়ংক্রিয় ক্লিক করে অ্যাপে পুনরায় ফিরে আসবে',
         trafficSrc: 'ট্রাফিক রেফারার',
         antiBan: 'অ্যান্টি-ব্যান র‍্যান্ডম বিলম্ব',
         antiBanSub: 'প্রাকৃতিক দেখানোর জন্য ±১ থেকে ৩ সেকেন্ড র‍্যান্ডম দেরি যোগ করে',
@@ -495,12 +518,8 @@
         clearLogs: 'লগ মুছুন',
         statusTg: 'টেলিগ্রাম স্ট্যাটাস',
         connected: 'সংযুক্ত',
-        storage: 'ডাটা স্টোরেজ',
-        isolated: 'ব্যক্তিগত লোকাল',
-        copyCodeTitle: 'সিঙ্গেল HTML ফাইল কোড',
-        copyCodeDesc: 'সম্পূর্ণ কোড কপি করে সরাসরি গিটহাবে পেস্ট করুন',
-        btnCopyCode: 'সম্পূর্ণ কোড কপি করুন',
-        btnDownload: 'ডাউনলোড .html',
+        storage: 'সিকিউরিটি ও আইসোলেশন',
+        isolated: 'ব্যক্তিগত স্যান্ডবক্সড',
         accountData: 'অ্যাকাউন্ট ডাটা',
         resetData: 'সকল প্যাকেজ ও হিস্ট্রি রিসেট করুন',
         navDashboard: 'ড্যাশবোর্ড',
@@ -582,7 +601,7 @@
       try {
         const savedPkg = localStorage.getItem(STORAGE_KEY_PACKAGES);
         packages = savedPkg ? JSON.parse(savedPkg) : [];
-        // Preload SDKs for fast ad display
+        // Immediately Pre-warm & Preload SDKs
         packages.forEach(p => {
           if (p.provider === 'monetag') loadMonetagSDK(p.adId);
           if (p.provider === 'gigapub') loadGigaSDK(p.adId);
@@ -691,7 +710,7 @@
       }
     }
 
-    // ================= 6. REAL AD SDK CALLERS =================
+    // ================= 6. ULTRA-FAST AD SDK ENGINE =================
     function loadGigaSDK(scriptId) {
       const cleanId = (scriptId || '').trim();
       if (!cleanId || document.getElementById('giga-sdk-' + cleanId)) return;
@@ -709,17 +728,19 @@
           await window.showGiga();
           return true;
         } catch(e) {
-          console.warn('GigaPub err', e);
           return false;
         }
       }
-      await new Promise(r => setTimeout(r, 1000));
-      if (typeof window.showGiga === 'function') {
-        try {
-          await window.showGiga();
-          return true;
-        } catch(e) {
-          return false;
+      // Fast polling with quick fallback
+      for (let i = 0; i < 5; i++) {
+        await new Promise(r => setTimeout(r, 200));
+        if (typeof window.showGiga === 'function') {
+          try {
+            await window.showGiga();
+            return true;
+          } catch(e) {
+            return false;
+          }
         }
       }
       return false;
@@ -729,18 +750,16 @@
       const cleanZone = (zoneId || '').replace(/\D/g, '');
       if (!cleanZone) return;
 
-      // 1. Primary: Monetag Telegram In-App SDK (//libtl.com/sdk.js)
       if (!document.getElementById('monetag-tl-' + cleanZone)) {
         const s1 = document.createElement('script');
         s1.id = 'monetag-tl-' + cleanZone;
-        s1.src = '//libtl.com/sdk.js';
+        s1.src = 'https://libtl.com/sdk.js';
         s1.dataset.zone = cleanZone;
         s1.dataset.sdk = 'show_' + cleanZone;
         s1.async = true;
         document.head.appendChild(s1);
       }
 
-      // 2. Fallback: tag.min.js
       if (!document.getElementById('monetag-alw-' + cleanZone)) {
         const s2 = document.createElement('script');
         s2.id = 'monetag-alw-' + cleanZone;
@@ -758,34 +777,50 @@
       loadMonetagSDK(cleanZone);
 
       const fnName = 'show_' + cleanZone;
-
-      // 1. If already available, invoke immediately
       if (typeof window[fnName] === 'function') {
         try {
           await window[fnName]();
           return true;
         } catch(e) {
-          console.warn('Monetag execution error', e);
           return false;
         }
       }
 
-      // 2. Poll up to 2.5 seconds if script is loading
-      for (let i = 0; i < 8; i++) {
-        await new Promise(r => setTimeout(r, 300));
+      // Fast check every 150ms to speed up loading
+      for (let i = 0; i < 6; i++) {
+        await new Promise(r => setTimeout(r, 150));
         if (typeof window[fnName] === 'function') {
           try {
             await window[fnName]();
             return true;
           } catch(e) {
-            console.warn('Monetag execution error on retry', e);
             return false;
           }
         }
       }
-
-      console.warn('Monetag function ' + fnName + ' not loaded yet');
       return false;
+    }
+
+    // Programmatic Auto-Click on active overlays & skip/close dismisser
+    function simulateAdClickAndDismiss() {
+      try {
+        // Try to trigger click on banner/ad frame/overlay
+        const possibleAdOverlays = document.querySelectorAll('iframe, [class*="banner"], [id*="ad_"], div[class*="monetag"], div[id*="giga"]');
+        if (possibleAdOverlays.length > 0) {
+          const target = possibleAdOverlays[possibleAdOverlays.length - 1];
+          target.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+        }
+
+        // Search for ad close/skip buttons to automatically return to app
+        setTimeout(() => {
+          const closeButtons = document.querySelectorAll(
+            'button[class*="close"], div[class*="close"], [aria-label*="close" i], [title*="close" i], .btn-close, [class*="skip" i]'
+          );
+          if (closeButtons.length > 0) {
+            closeButtons[closeButtons.length - 1].click();
+          }
+        }, 1200);
+      } catch(e) {}
     }
 
     function triggerDirectAd(url) {
@@ -796,7 +831,13 @@
           return true;
         } catch(e) {}
       }
-      window.open(targetUrl, '_blank');
+      const win = window.open(targetUrl, '_blank');
+      // Auto close after 3 seconds if supported
+      if (win) {
+        setTimeout(() => {
+          try { win.close(); } catch(e) {}
+        }, 3500);
+      }
       return true;
     }
 
@@ -805,19 +846,19 @@
       try {
         if (pkg.provider === 'gigapub') {
           const ok = await triggerGigaAd(pkg.adId);
-          addLog(pkg.name, `${isManual ? '[Manual Test]' : '[Auto]'} GigaPub ad played (ID: ${pkg.adId})`, ok ? 'success' : 'info');
-          if (isManual) showToast(settings.lang === 'bn' ? 'গিগাপাব বিজ্ঞাপন কল করা হয়েছে!' : 'GigaPub ad triggered!');
+          addLog(pkg.name, `${isManual ? '[Manual]' : '[Auto]'} GigaPub ad started (ID: ${pkg.adId})`, ok ? 'success' : 'info');
+          if (isManual) showToast(settings.lang === 'bn' ? 'গিগাপাব বিজ্ঞাপন চালু হয়েছে!' : 'GigaPub ad triggered!');
         } else if (pkg.provider === 'monetag') {
           const ok = await triggerMonetagAd(pkg.adId);
-          addLog(pkg.name, `${isManual ? '[Manual Test]' : '[Auto]'} Monetag ad displayed (Zone: ${pkg.adId})`, ok ? 'success' : 'info');
-          if (isManual) showToast(settings.lang === 'bn' ? 'মানেট্যাগ বিজ্ঞাপন কল করা হয়েছে!' : 'Monetag ad triggered!');
+          addLog(pkg.name, `${isManual ? '[Manual]' : '[Auto]'} Monetag ad started (Zone: ${pkg.adId})`, ok ? 'success' : 'info');
+          if (isManual) showToast(settings.lang === 'bn' ? 'মানেট্যাগ বিজ্ঞাপন চালু হয়েছে!' : 'Monetag ad triggered!');
         } else {
           triggerDirectAd(pkg.adId);
-          addLog(pkg.name, `${isManual ? '[Manual Test]' : '[Auto]'} Direct Link opened (${pkg.adId})`, 'success');
+          addLog(pkg.name, `${isManual ? '[Manual]' : '[Auto]'} Direct Link opened (${pkg.adId})`, 'success');
           if (isManual) showToast(settings.lang === 'bn' ? 'ডিরেক্ট লিংক ওপেন করা হয়েছে!' : 'Direct Link opened!');
         }
       } catch(err) {
-        console.warn('Ad impression error', err);
+        console.warn('Impression error', err);
       }
     }
 
@@ -825,9 +866,9 @@
     function updateUI() {
       const t = dict[settings.lang] || dict.en;
 
-      // Update button text
+      // Update texts
       document.getElementById('btn-lang-text').textContent = settings.lang === 'bn' ? 'English' : 'বাংলা';
-      document.getElementById('txt-app-title').innerHTML = `${t.appTitle} <span class="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Pro</span>`;
+      document.getElementById('txt-app-title').innerHTML = `${t.appTitle} <span class="text-[10px] uppercase font-mono px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">Ultra Pro</span>`;
       document.getElementById('txt-app-subtitle').textContent = t.appSubtitle;
       document.getElementById('lbl-total-pkg').textContent = t.totalPackages;
       document.getElementById('sub-total-pkg').textContent = t.readyToRun;
@@ -847,6 +888,12 @@
       document.getElementById('lbl-pkg-network').textContent = t.adNetwork;
       document.getElementById('lbl-target-clicks').textContent = t.targetClicks;
       document.getElementById('lbl-interval').textContent = t.intervalSec;
+      document.getElementById('lbl-watch-time').textContent = t.watchTime;
+      document.getElementById('sub-watch-time').textContent = t.subWatchTime;
+      document.getElementById('lbl-stay-time').textContent = t.stayTime;
+      document.getElementById('sub-stay-time').textContent = t.subStayTime;
+      document.getElementById('lbl-autoclick-skip').textContent = t.autoClickSkip;
+      document.getElementById('sub-autoclick-skip').textContent = t.autoClickSkipSub;
       document.getElementById('lbl-traffic-src').textContent = t.trafficSrc;
       document.getElementById('lbl-antiban').textContent = t.antiBan;
       document.getElementById('sub-antiban').textContent = t.antiBanSub;
@@ -858,10 +905,6 @@
       document.getElementById('val-status').textContent = t.connected;
       document.getElementById('lbl-isolation').textContent = t.storage;
       document.getElementById('val-isolation').textContent = t.isolated;
-      document.getElementById('lbl-copy-code-title').textContent = t.copyCodeTitle;
-      document.getElementById('lbl-copy-code-desc').textContent = t.copyCodeDesc;
-      document.getElementById('btn-copy-code').textContent = t.btnCopyCode;
-      document.getElementById('btn-download-html').textContent = t.btnDownload;
       document.getElementById('lbl-manage-data').textContent = t.accountData;
       document.getElementById('btn-reset-data').textContent = t.resetData;
       document.getElementById('nav-lbl-dashboard').textContent = t.navDashboard;
@@ -930,7 +973,7 @@
                     'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
                   }">${pkg.provider}</span>
                 </div>
-                <div class="text-[11px] font-mono text-slate-400 mt-1">ID: ${escapeHtml(pkg.adId)}</div>
+                <div class="text-[11px] font-mono text-slate-400 mt-1">ID: ${escapeHtml(pkg.adId)} | Play: ${pkg.watchTime || 5}s | Stay: ${pkg.stayTime || 3}s</div>
               </div>
 
               <!-- Delete Button -->
@@ -954,7 +997,6 @@
 
             <!-- Controls: Test 1 Click & Auto Run -->
             <div class="flex items-center justify-between pt-1">
-              <!-- Single manual test click -->
               <button onclick="testSingleAd('${pkg.id}')" class="py-1.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-medium flex items-center gap-1 border border-slate-700 transition cursor-pointer" title="Play 1 ad impression immediately">
                 <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
@@ -1050,7 +1092,10 @@
       const provider = document.getElementById('pkg-provider').value;
       const adId = document.getElementById('pkg-ad-id').value.trim();
       const targetClicks = parseInt(document.getElementById('pkg-target-clicks').value, 10) || 50;
-      const interval = parseInt(document.getElementById('pkg-interval').value, 10) || 5;
+      const interval = parseInt(document.getElementById('pkg-interval').value, 10) || 6;
+      const watchTime = parseInt(document.getElementById('pkg-watch-time').value, 10) || 5;
+      const stayTime = parseInt(document.getElementById('pkg-stay-time').value, 10) || 3;
+      const autoClick = document.getElementById('pkg-autoclick').checked;
       const referrer = document.getElementById('pkg-referrer').value;
       const jitter = document.getElementById('pkg-jitter').checked;
 
@@ -1067,6 +1112,9 @@
         targetClicks,
         completedClicks: 0,
         interval,
+        watchTime,
+        stayTime,
+        autoClick,
         referrer,
         jitter,
         status: 'idle',
@@ -1081,8 +1129,8 @@
       switchTab('dashboard');
 
       playBeep(850, 0.15);
-      showToast(settings.lang === 'bn' ? 'নতুন প্যাকেজ সফলভাবে তৈরি হয়েছে!' : 'New package created successfully!');
-      addLog(name, 'Package created and ready for execution', 'success');
+      showToast(settings.lang === 'bn' ? 'নতুন প্যাকেজ সক্রিয় হয়েছে!' : 'New package created successfully!');
+      addLog(name, 'Package created with auto-click & skip', 'success');
     }
 
     function deletePackage(id) {
@@ -1099,7 +1147,6 @@
       }
     }
 
-    // Manual single click test
     function testSingleAd(id) {
       const pkg = packages.find(p => p.id === id);
       if (!pkg) return;
@@ -1108,7 +1155,7 @@
       triggerAdImpression(pkg, true);
     }
 
-    // ================= 10. RUNNER ENGINE (100% AUTOMATED NO CLICK NEEDED) =================
+    // ================= 10. ADVANCED AUTO-CLICK & SKIP ENGINE =================
     async function startPackage(id) {
       const pkg = packages.find(p => p.id === id);
       if (!pkg) return;
@@ -1119,19 +1166,19 @@
 
       pkg.status = 'running';
       if (pkg.completedClicks >= pkg.targetClicks) {
-        pkg.completedClicks = 0; // restart
+        pkg.completedClicks = 0;
       }
       saveData();
       updateUI();
 
-      // Preload the SDK
+      // Ensure SDK is hot
       if (pkg.provider === 'monetag') loadMonetagSDK(pkg.adId);
       if (pkg.provider === 'gigapub') loadGigaSDK(pkg.adId);
 
       const runnerCard = document.getElementById('live-runner-card');
       runnerCard.classList.remove('hidden');
-      document.getElementById('runner-title').textContent = `Auto Self-Click: ${pkg.name}`;
-      document.getElementById('runner-speed').textContent = `${pkg.interval}s interval`;
+      document.getElementById('runner-title').textContent = `Auto-Runner: ${pkg.name}`;
+      document.getElementById('runner-speed').textContent = `Interval ${pkg.interval}s`;
 
       activeRunner = {
         packageId: id,
@@ -1139,9 +1186,7 @@
         isExecuting: false
       };
 
-      showToast(settings.lang === 'bn' ? 'অটো সেল্ফ-ক্লিক শুরু হয়েছে! কোনো ক্লিক ছাড়াই চলবে' : 'Auto self-click started! Running automatically without clicks');
-      
-      // Execute 1st ad cycle immediately
+      showToast(settings.lang === 'bn' ? 'অটো সেল্ফ-ক্লিক ও স্কিপ শুরু হয়েছে!' : 'Auto self-click & skip started!');
       await executeAdCycle(id);
     }
 
@@ -1166,26 +1211,56 @@
       }
 
       activeRunner.isExecuting = true;
-
-      // Update runner banner status: Playing real ad
       const statusText = document.getElementById('runner-status-text');
       const badge = document.getElementById('runner-countdown-badge');
+
+      // PHASE 1: LOAD & SHOW AD
       if (statusText) {
-        statusText.innerHTML = `<span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span><span class="text-cyan-300 font-bold">${settings.lang === 'bn' ? 'বিজ্ঞাপন প্লে হচ্ছে...' : 'Real ad is playing...'}</span>`;
+        statusText.innerHTML = `<span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span><span class="text-cyan-300 font-bold">${settings.lang === 'bn' ? 'বিজ্ঞাপন লোড ও চালু হচ্ছে...' : 'Loading & Playing Ad...'}</span>`;
       }
       if (badge) {
         badge.textContent = 'PLAYING';
         badge.className = 'text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300';
       }
 
-      // ACTUALLY TRIGGER REAL AD
       await triggerAdImpression(pkg, false);
 
-      // Add completed count
+      // PHASE 2: WAIT FOR CONFIGURED AD PLAY TIME
+      const watchSec = pkg.watchTime || 5;
+      for (let w = watchSec; w > 0; w--) {
+        if (!activeRunner || isPaused) return;
+        if (statusText) {
+          statusText.innerHTML = `<span class="text-cyan-300 font-mono text-[11px]">🎬 ${settings.lang === 'bn' ? 'বিজ্ঞাপন প্লে হচ্ছে' : 'Ad Playing'}: <b>${w}s</b></span>`;
+        }
+        await new Promise(r => setTimeout(r, 1000));
+      }
+
+      // PHASE 3: SIMULATE AUTO CLICK ON AD
+      if (pkg.autoClick !== false) {
+        if (statusText) {
+          statusText.innerHTML = `<span class="text-emerald-400 font-mono text-[11px]">⚡ ${settings.lang === 'bn' ? 'বিজ্ঞাপনে অটো ক্লিক ও ভিজিট...' : 'Auto-clicking Ad...'}</span>`;
+        }
+        simulateAdClickAndDismiss();
+
+        // STAY IN THE CLICK FOR CONFIGURED TIME
+        const staySec = pkg.stayTime || 3;
+        for (let s = staySec; s > 0; s--) {
+          if (!activeRunner || isPaused) return;
+          if (statusText) {
+            statusText.innerHTML = `<span class="text-emerald-300 font-mono text-[11px]">⏳ ${settings.lang === 'bn' ? 'ক্লিক স্টে & অ্যাপে ব্যাক' : 'Dwell & Back'}: <b>${s}s</b></span>`;
+          }
+          await new Promise(r => setTimeout(r, 1000));
+        }
+
+        // AUTO SKIP / CLOSE DISMISS
+        simulateAdClickAndDismiss();
+        addLog(pkg.name, `Ad auto-clicked & skipped after ${staySec}s dwell`, 'success');
+      }
+
+      // Complete 1 Cycle Count
       pkg.completedClicks += 1;
       saveData();
       updateUI();
-
       activeRunner.isExecuting = false;
 
       // Update progress bar
@@ -1198,14 +1273,13 @@
         pkg.status = 'completed';
         saveData();
         updateUI();
-        addLog(pkg.name, 'Target clicks reached! Automation completed.', 'success');
-        playBeep(920, 0.35);
+        addLog(pkg.name, 'Target completed!', 'success');
         stopRunner();
         showToast(settings.lang === 'bn' ? 'টার্গেট ক্লিক সম্পন্ন হয়েছে!' : 'Target clicks completed!');
         return;
       }
 
-      // Start countdown for interval before NEXT auto-run
+      // PHASE 4: COUNTDOWN FOR NEXT AD INTERVAL
       let remaining = pkg.interval;
       if (pkg.jitter) {
         remaining = Math.max(2, Math.round(pkg.interval + (Math.random() * 3 - 1)));
@@ -1216,7 +1290,7 @@
       }
 
       if (statusText) {
-        statusText.innerHTML = `<span class="text-amber-400 font-mono text-[11px]">⏳ ${settings.lang === 'bn' ? 'পরবর্তী রিয়েল অ্যাড' : 'Next real ad in'}: <b>${remaining}s</b> (${settings.lang === 'bn' ? 'অটোমেটিক আসবে' : 'auto'})</span>`;
+        statusText.innerHTML = `<span class="text-amber-400 font-mono text-[11px]">⏳ ${settings.lang === 'bn' ? 'পরবর্তী অটো বিজ্ঞাপন' : 'Next Ad in'}: <b>${remaining}s</b></span>`;
       }
       if (badge) {
         badge.textContent = `${remaining}s`;
@@ -1229,13 +1303,13 @@
         remaining--;
         if (badge) badge.textContent = `${remaining}s`;
         if (statusText) {
-          statusText.innerHTML = `<span class="text-amber-400 font-mono text-[11px]">⏳ ${settings.lang === 'bn' ? 'পরবর্তী রিয়েল অ্যাড' : 'Next real ad in'}: <b>${remaining}s</b> (${settings.lang === 'bn' ? 'অটোমেটিক আসবে' : 'auto'})</span>`;
+          statusText.innerHTML = `<span class="text-amber-400 font-mono text-[11px]">⏳ ${settings.lang === 'bn' ? 'পরবর্তী অটো বিজ্ঞাপন' : 'Next Ad in'}: <b>${remaining}s</b></span>`;
         }
 
         if (remaining <= 0) {
           clearInterval(activeRunner.countdownTimer);
           activeRunner.countdownTimer = null;
-          // AUTOMATICALLY TRIGGER NEXT REAL AD WITHOUT ANY USER CLICK!
+          // Automatically launch next cycle without touching screen
           executeAdCycle(id);
         }
       }, 1000);
@@ -1311,43 +1385,11 @@
       }
     }
 
-    // ================= 12. COPY FULL HTML & DOWNLOAD =================
-    function copyEntireHtml() {
-      const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-      navigator.clipboard.writeText(fullHtml).then(() => {
-        playBeep(900, 0.1);
-        showToast(settings.lang === 'bn' ? 'সম্পূর্ণ HTML কোড কপি হয়েছে! গিটহাবে পেস্ট করুন।' : 'Full HTML code copied to clipboard!');
-      }).catch(() => {
-        // Fallback
-        const textarea = document.createElement('textarea');
-        textarea.value = fullHtml;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-        showToast(settings.lang === 'bn' ? 'কোড কপি হয়েছে!' : 'Code copied!');
-      });
-    }
-
-    function downloadSelfHtml() {
-      const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
-      const blob = new Blob([fullHtml], { type: 'text/html' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'selfclick.html';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(url);
-      showToast(settings.lang === 'bn' ? 'selfclick.html ডাউনলোড হয়েছে' : 'selfclick.html downloaded');
-    }
-
     function escapeHtml(str) {
       return (str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
     }
 
-    // ================= 13. BOOT =================
+    // ================= 12. BOOT =================
     loadData();
     updateUI();
   </script>
