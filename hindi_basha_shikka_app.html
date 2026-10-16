@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Privacy Policy - Hindi Language Learning</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background-color: #f8fafc;
+            color: #334155;
+            padding: 16px;
+            line-height: 1.6;
+            padding-bottom: 70px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+        h1 {
+            font-size: 20px;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+        .update-date {
+            font-size: 12px;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 15px;
+            color: #1e293b;
+            margin-top: 16px;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        p, li {
+            font-size: 13px;
+            color: #475569;
+            margin-bottom: 10px;
+        }
+        ul {
+            padding-left: 18px;
+            margin-bottom: 10px;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 12px;
+            color: #94a3b8;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 12px;
+        }
+
+        /* Draggable Translate Floating Button & Menu */
+        .fab-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1000;
+            touch-action: none;
+        }
+        .fab-btn {
+            background-color: #2563eb;
+            color: white;
+            border-radius: 30px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            user-select: none;
+            border: 2px solid #fff;
+        }
+        .fab-btn svg {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+        }
+        .translate-menu {
+            position: absolute;
+            bottom: 55px;
+            right: 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            padding: 12px;
+            display: none;
+            width: 180px;
+            border: 1px solid #e2e8f0;
+        }
+        .translate-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        <div class="update-date">Last Updated: October 2026</div>
+
+        <p>Your privacy is of utmost importance to us. The <strong>Hindi Language Learning</strong> app is committed to protecting your data while you use our services. This Privacy Policy explains how information is handled.</p>
+
+        <h2>1. Information Collection</h2>
+        <p>This app is designed as an offline-first or local WebView-based structure. We do not directly collect or store any personal data (such as names, addresses, phone numbers, or emails) on our external servers.</p>
+
+        <h2>2. Permissions</h2>
+        <p>The app only requests basic internet permissions required to render the web pages correctly. It does not access your personal files, media, or contacts.</p>
+
+        <h2>3. Third-Party Services & Ads</h2>
+        <p>If the app displays any third-party ad networks or external links, their respective privacy policies apply. Our primary goal is to ensure a safe and secure user experience.</p>
+
+        <h2>4. Data Security</h2>
+        <p>We respect device security. Since there are no intrusive trackers or sensitive data collection systems built into the core app pages, your privacy remains completely secure.</p>
+
+        <h2>5. Changes to This Policy</h2>
+        <p>We may update or modify this Privacy Policy from time to time as necessary. Any changes will be reflected directly on this page.</p>
+
+        <h2>6. Contact Us</h2>
+        <p>If you have any questions or feedback regarding this Privacy Policy, please feel free to reach out.</p>
+
+        <div class="footer">
+            &copy; 2026 Hindi Language Learning App. All rights reserved.
+        </div>
+    </div>
+
+    <!-- Draggable Floating Action Button for Translation -->
+    <div class="fab-container" id="fabContainer">
+        <div class="translate-menu" id="translateMenu">
+            <div style="font-size: 11px; font-weight: bold; margin-bottom: 8px; color: #475569; text-align: center;">Select Language</div>
+            <div id="google_translate_element"></div>
+        </div>
+        <div class="fab-btn" id="fabBtn">
+            <svg viewBox="0 0 24 24"><path d="M12.87 15.07l-2.54-2.51.03-.03A17.52 17.52 0 0014.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7l1.62-4.33L19.12 17h-3.24z"/></svg>
+            Translate
+        </div>
+    </div>
+
+    <!-- Google Translate Script -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'bn,hi,en,ur,ar,es',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        const fabBtn = document.getElementById('fabBtn');
+        const translateMenu = document.getElementById('translateMenu');
+        
+        fabBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            translateMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            translateMenu.classList.remove('active');
+        });
+
+        translateMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        // Draggable Functionality (Touch & Mouse Support)
+        const fabContainer = document.getElementById('fabContainer');
+        let isDragging = false;
+        let initialX, initialY;
+
+        fabContainer.addEventListener('touchstart', dragStart, {passive: true});
+        document.addEventListener('touchmove', drag, {passive: false});
+        document.addEventListener('touchend', dragEnd);
+
+        fabContainer.addEventListener('mousedown', dragStart);
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('mouseup', dragEnd);
+
+        function dragStart(e) {
+            isDragging = true;
+            let clientX = e.type === 'touchstart' ? e.touches[0].clientX : e.clientX;
+            let clientY = e.type === 'touchstart' ? e.touches[0].clientY : e.clientY;
+            
+            initialX = clientX - fabContainer.getBoundingClientRect().left;
+            initialY = clientY - fabContainer.getBoundingClientRect().top;
+        }
+
+        function drag(e) {
+            if (!isDragging) return;
+            if(e.type === 'touchmove') {
+                e.preventDefault();
+            }
+
+            let clientX = e.type === 'touchmove' ? e.touches[0].clientX : e.clientX;
+            let clientY = e.type === 'touchmove' ? e.touches[0].clientY : e.clientY;
+
+            let newX = clientX - initialX;
+            let newY = clientY - initialY;
+
+            let maxX = window.innerWidth - fabContainer.offsetWidth;
+            let maxY = window.innerHeight - fabContainer.offsetHeight;
+
+            newX = Math.max(0, Math.min(newX, maxX));
+            newY = Math.max(0, Math.min(newY, maxY));
+
+            fabContainer.style.left = newX + 'px';
+            fabContainer.style.top = newY + 'px';
+            fabContainer.style.right = 'auto';
+            fabContainer.style.bottom = 'auto';
+        }
+
+        function dragEnd() {
+            isDragging = false;
+        }
+    </script>
+</body>
+</html>
